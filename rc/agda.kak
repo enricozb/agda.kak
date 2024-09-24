@@ -36,7 +36,7 @@ add-highlighter shared/agda/code default-region group
 add-highlighter shared/agda/code/number regex \b\d+(\.\d+)?\b 0:value
 add-highlighter shared/agda/code/constructor regex (?<!\.)\b([A-Z]\w+)\b(?!\.) 1:type
 add-highlighter shared/agda/code/definition regex ^\h*([^\h.]+)\h*: 1:type
-add-highlighter shared/agda/code/symbols regex \s(=|\|->|→|:|\?|λ|∀|\.{2,3}|Set)\s 1:function
+add-highlighter shared/agda/code/symbols regex \s(=|\||->|→|:|\?|λ|∀|\.{2,3}|Set)\s 1:function
 add-highlighter shared/agda/double_string region '"' '(?<!\\)(\\\\)*"' fill string
 add-highlighter shared/agda/single_string region "'" "'"               fill value
 add-highlighter shared/agda/line-comment region '--' $ fill comment
