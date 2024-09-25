@@ -68,6 +68,7 @@ evaluate-commands %sh{
 declare-user-mode agda
 
 map global agda m -docstring 'check' ': agda-check<ret>'
+map global agda M -docstring 'check (no-termination)' ': agda-check-no-termination<ret>'
 
 define-command -override agda-check %{
   popup \
@@ -75,6 +76,25 @@ define-command -override agda-check %{
     -- \
     fish -c %{
       set output (agda --color=always $argv[1])
+
+      if [ $status = 0 ]
+        echo "Checked OK"
+      else
+        # joins the `output` list with `\n` as a separator
+        echo {$output}\n
+      end
+
+      # wait for any keypress
+      read -n 1 -s -P ''
+    } %val{buffile}
+}
+
+define-command -override agda-check-no-termination %{
+  popup \
+    --title 'agda check (no-termination)' \
+    -- \
+    fish -c %{
+      set output (agda --color=always --no-termination-check $argv[1])
 
       if [ $status = 0 ]
         echo "Checked OK"
