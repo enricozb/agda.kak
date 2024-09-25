@@ -16,7 +16,6 @@ hook global BufCreate .*.agda$ %{
 hook global WinSetOption filetype=agda %{
     require-module agda
     set-option window static_words %opt{agda_static_words}
-    set-option -add buffer extra_word_chars .
 
     map window normal <c-a> ': enter-user-mode agda<ret>'
 }
